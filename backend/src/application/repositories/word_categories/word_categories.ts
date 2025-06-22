@@ -8,9 +8,9 @@ import { ICreateWordCategoryDTO, IUpdateWordCategoryDTO } from "../../../domain/
  * Prisma implementation of the word_categories repository.
  *
  * @class
- * @implements {IWordCategoryCategoriesRepository}
+ * @implements {WordCategoryRepository}
  */
-export class WordCategoryCategoriesRepository implements IWordCategoriesRepository {
+export class WordCategoryRepository implements IWordCategoriesRepository {
     /**
      * Creates an instance of MaterialsRepository.
      *
@@ -56,12 +56,12 @@ export class WordCategoryCategoriesRepository implements IWordCategoriesReposito
      * @returns {Promise<IWordCategoryInRequestDTO | unknown>} The found materi or undefined.
      */
     async findAll(): Promise<IWordCategoryEntity[]> {
-        const perPage = 10;
-        const pageNumber = 1;
+        // const perPage = 10;
+        // const pageNumber = 1;
 
         const word_categories = await this.prisma.word_categories.findMany({
-            take: perPage,
-            skip: Math.ceil((pageNumber - 1) * perPage),
+            // take: perPage,
+            // skip: Math.ceil((pageNumber - 1) * perPage),
             orderBy: {
                 id: "asc",
             },

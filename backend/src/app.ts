@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 // auth router
 import { userRouter } from "./http/routes/users/users";
 import { languageRouter } from "./http/routes/languages/languages";
+import { wordCategoryRouter } from "./http/routes/word_categories/word_categories";
 
 dotenv.config();
 
@@ -40,5 +41,11 @@ user
 **/
 app.use(languageRouter);
 
+
+
+/*
+user
+**/
+app.use(wordCategoryRouter);
 
 export { app };
