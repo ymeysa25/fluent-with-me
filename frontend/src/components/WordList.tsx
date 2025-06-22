@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { useSelectionStore } from "@/stores/useSelectionStore";
+import Image from "next/image";
 
 interface Word {
   id: number;
@@ -44,10 +45,13 @@ export default function WordList() {
           key={word.id}
           className="bg-white shadow p-4 rounded-xl text-center"
         >
-          <img
+          <Image
             src={word.image_url}
             alt={word.word}
-            className="h-24 w-full object-cover rounded mb-2"
+            width={200}
+            height={150}
+            className="w-full h-24 object-cover rounded mb-2"
+            // unoptimized // or remove if you're okay with optimization
           />
           <div className="text-xl font-bold">{word.word}</div>
           <div className="text-sm text-gray-500">{word.translation_id}</div>

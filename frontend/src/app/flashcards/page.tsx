@@ -6,6 +6,13 @@ import { useSelectionStore } from "@/stores/useSelectionStore";
 import { useRouter } from "next/navigation";
 import CategoryCard from "@/components/CategoryCard";
 
+interface Category {
+  id: number;
+  name: string;
+  image_url?: string;
+}
+
+
 export default function FlashcardPage() {
   const [categories, setCategories] = useState([]);
   const languageId = useSelectionStore((state) => state.languageId);
@@ -32,7 +39,7 @@ export default function FlashcardPage() {
     <div className="p-4">
       <h2 className="text-xl font-semibold mb-4">Select a Category</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {categories.map((cat: any) => (
+        {categories.map((cat: Category) => (
           <div key={cat.id} onClick={() => handleSelect(cat.id)}>
             <CategoryCard id={cat.id} name={cat.name} />
           </div>
