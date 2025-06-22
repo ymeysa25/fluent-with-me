@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
+    "classnames": "^2.5.1",
     "lucide-react": "^0.519.0",
     "next": "15.3.4",
     "react": "^19.0.0",
