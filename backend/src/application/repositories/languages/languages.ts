@@ -35,6 +35,7 @@ export class LanguagesRepository implements ILanguagesRepository {
                 id: true,
                 code: true,
                 name: true,
+                image_url: true,
                 created_at: true,
             },
         });
@@ -45,6 +46,7 @@ export class LanguagesRepository implements ILanguagesRepository {
             id: language.id,
             code: language.code,
             name: language.name,
+            image_url: language.image_url,
             created_at: language.created_at
         };
     }
@@ -70,6 +72,7 @@ export class LanguagesRepository implements ILanguagesRepository {
                 id: true,
                 code: true,
                 name: true,
+                image_url: true,
                 created_at: true,
             },
         });
@@ -87,18 +90,21 @@ export class LanguagesRepository implements ILanguagesRepository {
     async create({
         code,
         name,
+        image_url,
     }: ICreateLanguageDTO): Promise<ILanguageEntity> {
         const now = new Date();
         const language = await this.prisma.languages.create({
             data: {
                 code,
                 name,
+                image_url,
                 created_at: now,
             },
             select: {
                 id: true,
                 code: true,
                 name: true,
+                image_url: true,
                 created_at: true,
             },
         });
@@ -127,6 +133,7 @@ export class LanguagesRepository implements ILanguagesRepository {
                 id: true,
                 code: true,
                 name: true,
+                image_url: true,
                 created_at: true,
             },
         });

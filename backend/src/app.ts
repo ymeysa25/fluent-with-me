@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 // auth router
 import { userRouter } from "./http/routes/users/users";
+import { languageRouter } from "./http/routes/languages/languages";
 
 dotenv.config();
 
@@ -27,10 +28,17 @@ Configurations
 // app.use(morgan("dev"));
 app.use(express.json());
 // app.use(cookieSession({ signed: false, secure: false }));
+
 /*
-Auth
+user
 **/
 app.use(userRouter);
+
+
+/*
+user
+**/
+app.use(languageRouter);
 
 
 export { app };

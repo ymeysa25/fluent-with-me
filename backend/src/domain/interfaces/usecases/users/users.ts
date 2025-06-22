@@ -1,6 +1,6 @@
-import { ResponseDTO } from '../../../domain/entities/response'
-import { ICreateUserRequestDTO } from '../../../domain/entities/users/create_user'
-import { IUpdateUserRequestDTO } from '../../../domain/entities/users/update_user'
+import { ResponseDTO } from '../../../../domain/entities/response'
+import { ICreateUserRequestDTO } from '../../../../domain/entities/users/dto/create_user_dto'
+import { IUpdateUserRequestDTO } from '../../../../domain/entities/users/dto/update_user_dto'
 
 /**
  * Interface for the use case of creating a new user.
