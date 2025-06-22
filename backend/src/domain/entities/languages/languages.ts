@@ -70,7 +70,7 @@ export class LanguageEntity {
      */
     constructor(props: ILanguageEntity) {
         this._name = props.name
-        this._code = props.name
+        this._code = props.code
         this._image_url = props.image_url
     }
 }

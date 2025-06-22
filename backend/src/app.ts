@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import { userRouter } from "./http/routes/users/users";
 import { languageRouter } from "./http/routes/languages/languages";
 import { wordCategoryRouter } from "./http/routes/word_categories/word_categories";
+import { wordRouter } from "./http/routes/words/words";
 
 dotenv.config();
 
@@ -37,15 +38,21 @@ app.use(userRouter);
 
 
 /*
-user
+language
 **/
 app.use(languageRouter);
 
 
 
 /*
-user
+word category
 **/
 app.use(wordCategoryRouter);
+
+
+/*
+word
+**/
+app.use(wordRouter);
 
 export { app };

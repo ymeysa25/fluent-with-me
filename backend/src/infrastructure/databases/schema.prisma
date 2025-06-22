@@ -54,14 +54,15 @@ model users {
 }
 
 model words {
-  id          Int       @id @default(autoincrement())
-  language_id Int
-  word        String    @db.VarChar(255)
-  image_url   String?
-  audio_url   String?
-  translation String?   @db.VarChar(255)
-  category_id Int
-  created_at  DateTime? @default(now()) @db.Timestamp(6)
+  id             Int       @id @default(autoincrement())
+  language_id    Int
+  word           String    @db.VarChar(255)
+  image_url      String?
+  audio_url      String?
+  category_id    Int
+  created_at     DateTime? @default(now()) @db.Timestamp(6)
+  translation_id String?   @db.VarChar(255)
+  translation_en String?   @db.VarChar(255)
 }
 
 model word_categories {

@@ -1,4 +1,4 @@
-import { ICreateWordDTO, IUpdateWordDTO } from "../../../entities/words/dto/words_dto";
+import { ICreateWordDTO, IGetWordsDTO, IUpdateWordDTO } from "../../../entities/words/dto/words_dto";
 import { IWordEntity } from "../../../entities/words/words";
 
 /**
@@ -20,7 +20,7 @@ export interface IWordsRepository {
      *
      * @returns {Promise<IWordEntity[]>} A promise that resolves with an array of word entities.
      */
-    findAll(): Promise<IWordEntity[]>;
+    findAll(data: IGetWordsDTO): Promise<IWordEntity[]>;
 
     /**
      * Create a new word.

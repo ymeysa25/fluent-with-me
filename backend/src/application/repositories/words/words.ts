@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { IWordsRepository } from "../../../domain/interfaces/repositories/words/words";
 import { IWordEntity } from "../../../domain/entities/words/words";
-import { ICreateWordDTO, IUpdateWordDTO } from "../../../domain/entities/words/dto/words_dto";
+import { ICreateWordDTO, IGetWordsDTO, IUpdateWordDTO } from "../../../domain/entities/words/dto/words_dto";
 
 /**
  * Prisma implementation of the words repository.
@@ -38,7 +38,8 @@ export class WordsRepository implements IWordsRepository {
                 word: true,
                 image_url: true,
                 audio_url: true,
-                translation: true,
+                translation_id: true,
+                translation_en: true,
                 category_id: true,
                 created_at: true,
             },
@@ -52,7 +53,8 @@ export class WordsRepository implements IWordsRepository {
             word: word.word,
             image_url: word.image_url,
             audio_url: word.audio_url,
-            translation: word.translation,
+            translation_id: word.translation_id,
+            translation_en: word.translation_en,
             category_id: word.category_id,
             created_at: word.created_at
         };
@@ -65,12 +67,16 @@ export class WordsRepository implements IWordsRepository {
      * @param {string} slug - The slug to search for.
      * @returns {Promise<IWordInRequestDTO | unknown>} The found materi or undefined.
      */
-    async findAll(): Promise<IWordEntity[]> {
+    async findAll(data: IGetWordsDTO): Promise<IWordEntity[]> {
         const perPage = 10;
         const pageNumber = 1;
 
         const words = await this.prisma.words.findMany({
             take: perPage,
+            where: {
+                language_id: data.language_id,
+                category_id: data.category_id,
+            },
             skip: Math.ceil((pageNumber - 1) * perPage),
             orderBy: {
                 id: "asc",
@@ -81,7 +87,8 @@ export class WordsRepository implements IWordsRepository {
                 word: true,
                 image_url: true,
                 audio_url: true,
-                translation: true,
+                translation_id: true,
+                translation_en: true,
                 category_id: true,
                 created_at: true,
             },
@@ -102,7 +109,8 @@ export class WordsRepository implements IWordsRepository {
         word,
         image_url,
         audio_url,
-        translation,
+        translation_id,
+        translation_en,
         category_id,
     }: ICreateWordDTO): Promise<IWordEntity> {
         const now = new Date();
@@ -112,7 +120,8 @@ export class WordsRepository implements IWordsRepository {
                 word,
                 image_url,
                 audio_url,
-                translation,
+                translation_id,
+                translation_en,
                 category_id,
                 created_at: now,
             },
@@ -122,7 +131,8 @@ export class WordsRepository implements IWordsRepository {
                 word: true,
                 image_url: true,
                 audio_url: true,
-                translation: true,
+                translation_id: true,
+                translation_en: true,
                 category_id: true,
                 created_at: true,
             },
@@ -149,7 +159,8 @@ export class WordsRepository implements IWordsRepository {
                 word: data.word,
                 image_url: data.image_url,
                 audio_url: data.audio_url,
-                translation: data.translation,
+                translation_id: data.translation_id,
+                translation_en: data.translation_en,
                 category_id: data.category_id,
             },
             select: {
@@ -158,7 +169,8 @@ export class WordsRepository implements IWordsRepository {
                 word: true,
                 image_url: true,
                 audio_url: true,
-                translation: true,
+                translation_id: true,
+                translation_en: true,
                 category_id: true,
                 created_at: true,
             },
