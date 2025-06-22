@@ -1,22 +1,24 @@
 import "./globals.css";
 import { ReactNode } from "react";
-import BottomNav from "@/components/BottomNav";
 import Sidebar from "@/components/Sidebar";
+import BottomNav from "@/components/BottomNav";
+import Header from "@/components/Header";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 min-h-screen flex flex-col md:flex-row">
-        {/* ✅ Sidebar: only on md+ screens */}
-        <aside className="hidden md:block w-64 bg-white border-r p-6">
-          <Sidebar />
-        </aside>
+      <body className="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+        <Header />
 
-        {/* ✅ Main content always shown */}
-        <main className="flex-grow p-4 md:p-8">{children}</main>
+        <div className="flex flex-1">
+          <aside className="hidden md:block w-64 p-6 border-r bg-white">
+            <Sidebar />
+          </aside>
 
-        {/* ✅ Bottom nav: only on small screens */}
-        <div className="md:hidden">
+          <main className="flex-1 p-4 md:p-8">{children}</main>
+        </div>
+
+        <div className="md:hidden fixed bottom-0 left-0 w-full">
           <BottomNav />
         </div>
       </body>

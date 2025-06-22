@@ -1,5 +1,5 @@
-import { useFlashcardStore } from "@/store/useFlashcardStore";
-import { useLanguageStore } from "@/store/useLanguageStore";
+import { useFlashcardStore } from "@/stores/useFlashcardStore";
+import { useLanguageStore } from "@/stores/useLanguageStore";
 
 export function useFilteredCards() {
   const cards = useFlashcardStore((s) => s.cards);

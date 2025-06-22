@@ -1,5 +1,5 @@
 "use client";
-import { useFlashcardStore } from "@/store/useFlashcardStore";
+import { useFlashcardStore } from "@/stores/useFlashcardStore";
 
 export default function ProgressPage() {
   const remembered = useFlashcardStore((s) => s.remembered);

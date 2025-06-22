@@ -16,7 +16,7 @@ router.post("/word/create", async (req: Request, res: Response) => {
 /**
  * Endpoint to get word information (requires authentication).
  */
-router.get(
+router.post(
     "/word",
     async (req: Request, res: Response) => {
         try {

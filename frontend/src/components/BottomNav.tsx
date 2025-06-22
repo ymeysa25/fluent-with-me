@@ -6,9 +6,10 @@ import { Home, Brain, BarChart, Globe } from "lucide-react";
 const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/practice", label: "Practice", icon: Brain },
-  { href: "/progress", label: "Progress", icon: BarChart },
+  { href: "/flashcards", label: "Flashcards", icon: BarChart },
   { href: "/languages", label: "Languages", icon: Globe },
 ];
+
 
 export default function BottomNav() {
   const pathname = usePathname();

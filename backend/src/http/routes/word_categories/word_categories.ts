@@ -22,7 +22,7 @@ router.post("/word_category/create", async (req: Request, res: Response) => {
  * Endpoint to get word_category information (requires authentication).
  */
 router.get(
-    "/word_category",
+    "/word_categories",
     async (req: Request, res: Response) => {
         try {
             const adapter = await expressAdapter(req, getWordCategoryComposer());

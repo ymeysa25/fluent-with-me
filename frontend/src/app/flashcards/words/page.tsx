@@ -6,7 +6,6 @@ export default function PracticePage() {
   const languageId = useSelectionStore((s) => s.languageId);
   const categoryId = useSelectionStore((s) => s.categoryId);
 
-
   console.log("languageId",languageId)
   console.log("categoryId",categoryId)
 

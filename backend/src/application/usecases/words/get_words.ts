@@ -29,10 +29,7 @@ export class GetAllWordUseCase implements IGetAllWordUseCase {
   async execute(data: IGetWordsDTO): Promise<ResponseDTO> {
     try {
       const words = await this.wordRepository.findAll(data)
-      if (words.length === 0) {
-        return { data: { error: WordErrorType.WordNotFound }, success: false }
-      }
-
+  
       return { data: words, success: true }
     } catch (error: any) {
       return { data: { error: error.message }, success: false }

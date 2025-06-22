@@ -1,9 +1,14 @@
+// components/Header.tsx
+"use client";
+
+import LanguageDropdown from "@/components/LanguageDropdown";
+
+
 export default function Header() {
-    return (
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Welcome back, Yogie!</h1>
-        <div className="w-10 h-10 bg-gray-300 rounded-full" />
-      </div>
-    );
-  }
-  
+  return (
+    <header className="w-full flex justify-between items-center px-6 py-4 border-b bg-white shadow-sm sticky top-0 z-50">
+      <div className="text-lg font-semibold">Welcome back, Yogie 👋</div>
+      <LanguageDropdown />
+    </header>
+  );
+}

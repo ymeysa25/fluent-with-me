@@ -4,7 +4,7 @@ import { createLanguageComposer, deleteLanguageComposer, getLanguageComposer, up
 
 const router = Router();
 
-router.post("/language/create", async (req: Request, res: Response) => {
+router.post("/api/language/create", async (req: Request, res: Response) => {
     try {
         const adapter = await expressAdapter(req, createLanguageComposer());
         res.status(adapter.statusCode).json(adapter.body);
@@ -17,7 +17,7 @@ router.post("/language/create", async (req: Request, res: Response) => {
  * Endpoint to get language information (requires authentication).
  */
 router.get(
-    "/language",
+    "/api/languages",
     async (req: Request, res: Response) => {
         try {
             const adapter = await expressAdapter(req, getLanguageComposer());
@@ -32,7 +32,7 @@ router.get(
  * Endpoint to update language information (requires authentication).
  */
 router.post(
-    "/language/update/:id",
+    "/api/language/update/:id",
     async (req: Request, res: Response) => {
         try {
             const adapter = await expressAdapter(req, updateLanguageComposer());
@@ -47,7 +47,7 @@ router.post(
  * Endpoint to delete a language (requires authentication).
  */
 router.post(
-    "/language/delete/:id",
+    "/api/language/delete/:id",
     async (req: Request, res: Response) => {
         try {
             const adapter = await expressAdapter(req, deleteLanguageComposer());

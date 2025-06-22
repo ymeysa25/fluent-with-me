@@ -28,10 +28,7 @@ export class GetAllWordCategoryUseCase implements IGetAllWordCategoryUseCase {
   async execute(): Promise<ResponseDTO> {
     try {
       const word_categories = await this.wordCategoryRepository.findAll()
-      if (word_categories.length === 0) {
-        return { data: { error: WordCategoryErrorType.WordCategoryNotFound }, success: false }
-      }
-
+      
       return { data: word_categories, success: true }
     } catch (error: any) {
       return { data: { error: error.message }, success: false }

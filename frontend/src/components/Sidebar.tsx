@@ -1,28 +1,34 @@
+// components/Sidebar.tsx
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils"; 
+
+const menuItems = [
+  { name: "Home", href: "/" },
+  { name: "Flashcards", href: "/flashcards" },
+  { name: "Progress", href: "/progress" },
+];
 
 export default function Sidebar() {
   const pathname = usePathname();
 
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/practice", label: "Practice" },
-    { href: "/progress", label: "Progress" },
-  ];
-
   return (
-    <nav className="space-y-4">
-      <h2 className="text-2xl font-bold mb-6">Fluent With Me</h2>
-      {links.map((link) => (
+    <nav className="flex flex-col space-y-4">
+      <h1 className="text-2xl font-bold text-blue-600 mb-4">Fluent With Me</h1>
+      {menuItems.map((item) => (
         <Link
-          key={link.href}
-          href={link.href}
-          className={`block text-lg ${
-            pathname === link.href ? "text-blue-600 font-semibold" : "text-gray-600"
-          }`}
+          key={item.href}
+          href={item.href}
+          className={cn(
+            "px-3 py-2 rounded-lg transition-all font-medium",
+            pathname === item.href
+              ? "bg-blue-50 text-blue-600"
+              : "hover:bg-gray-100 text-gray-700"
+          )}
         >
-          {link.label}
+          {item.name}
         </Link>
       ))}
     </nav>

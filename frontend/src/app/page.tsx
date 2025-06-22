@@ -1,27 +1,37 @@
-import Link from "next/link";
-import Header from "@/components/Header";
-import LanguageSelector from "@/components/LanguageSelector";
+"use client";
+
+import { useEffect, useState } from "react";
 import StatCard from "@/components/StatCard";
+import { useRouter } from "next/navigation";
+import { useSelectionStore } from "@/stores/useSelectionStore";
 
-export default function Home() {
+export default function HomePage() {
+  const router = useRouter();
+  const languageId = useSelectionStore((s) => s.languageId);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // ⛔ prevent hydration mismatch
+
   return (
-    <main className="p-4 min-h-screen bg-gray-50">
-      <Header />
+    <section className="space-y-6">
+      <h2 className="text-2xl font-semibold">Dashboard</h2>
 
-      <div className="mt-6 space-y-6">
-        <LanguageSelector />
-
-        <div className="flex flex-col sm:flex-row gap-4">
-          <StatCard title="Words Learned" value={150} />
-          <StatCard title="Reviews Due" value={23} />
-        </div>
-
-        <Link href="/practice">
-          <button className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold shadow hover:bg-blue-700">
-            Start Practicing
-          </button>
-        </Link>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <StatCard title="Words Learned" value={150} />
+        <StatCard title="Reviews Due" value={23} />
       </div>
-    </main>
+
+      <button
+        className="w-full md:w-auto px-6 py-3 bg-blue-600 text-white rounded-xl text-lg font-semibold shadow hover:bg-blue-700 transition"
+        onClick={() => router.push("/flashcards")}
+        disabled={!languageId}
+      >
+        {languageId ? "Start Practicing" : "Choose a Language First"}
+      </button>
+    </section>
   );
 }
