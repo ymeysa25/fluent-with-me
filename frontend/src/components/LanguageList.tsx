@@ -16,7 +16,7 @@ export default function LanguageList() {
 
   useEffect(() => {
     const fetchLanguages = async () => {
-      const res = await fetch("http://localhost:3001/language"); // Replace with your backend base URL
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/language`); // Replace with your backend base URL
       const data = await res.json();
       setLanguages(data);
     };

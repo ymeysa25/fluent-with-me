@@ -14,8 +14,7 @@ export default function FlashcardPage() {
 
   useEffect(() => {
     if (!languageId) return;
-
-    fetch(`http://localhost:3001/word_categories`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/word_categories`)
       .then((res) => res.json())
       .then(setCategories);
   }, [languageId]);

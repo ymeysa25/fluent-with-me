@@ -14,7 +14,7 @@ export default function CategoryCard({ id, name }: Props) {
   const handleClick = () => {
     if (!languageId) return; // prevent if no language
     setCategory(id);
-    router.push("/practice");
+    router.push("/flashcards");
   };
 
   return (

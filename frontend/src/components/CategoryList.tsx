@@ -14,7 +14,7 @@ export default function CategoryList() {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await fetch("http://localhost:3001/word_categories"); // adjust URL if needed
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/word_categories`); // adjust URL if needed
       const data = await res.json();
       setCategories(data);
     };

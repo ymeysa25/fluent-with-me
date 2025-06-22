@@ -5,9 +5,8 @@ import { Home, Brain, BarChart, Globe } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/practice", label: "Practice", icon: Brain },
   { href: "/flashcards", label: "Flashcards", icon: BarChart },
-  { href: "/languages", label: "Languages", icon: Globe },
+  { href: "/progress", label: "Progress", icon: Brain },
 ];
 
 

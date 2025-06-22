@@ -19,7 +19,7 @@ export default function LanguageDropdown() {
 
   useEffect(() => {
     const fetchLanguages = async () => {
-      const res = await fetch("http://localhost:3001/api/languages");
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/languages`);
       const data = await res.json();
       setLanguages(data);
   

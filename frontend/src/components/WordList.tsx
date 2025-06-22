@@ -21,7 +21,7 @@ export default function WordList() {
     if (!languageId || !categoryId) return;
 
     const fetchWords = async () => {
-      const res = await fetch("http://localhost:3001/word", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/word`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ language_id: languageId, category_id: categoryId }), // ✅ FIXED
